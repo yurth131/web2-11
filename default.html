@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>初めてのthree.js</title>
+  <style>
+  body{margin:0;}
+  canvas{width:100%;height:100%}
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.js"></script>
+  <script type="text/javascript">
+    var scene=new THREE.Scene();
+    var camera =new ThREE.perspectiveCamera(75,window.innerWidth/window.innerHeight,0,.1,1000);
+    
+    varrender = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    document.doby.appendChild(renderer.domElement);
+    
+    window.addEventListener('resize',function(){
+      renderer.setSize(window.innerWidth,window.innerHeight);
+      camera.aspect=window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      },false);
+      
+      var light =new THEREE.DirectionalLight(0xcccccc);
+      ligght.position.set(0,100,30);
+      scene.add(light);
+      scene.add(new THREE.AmbientLight(0x666666));
+      
+      var geometry=new THREE.BOxDeometry(1,1,1);
+      var material =nwe THREE.MeshStadardMaterial({color:0xccffcc});
+      var mesh =new THREE.Mesh(geometry,material);
+      scene.add(mesh);
+      
+      camera.potion.z=5;
+      
+      varclock=new THREE.Clock();
+      var render=function(){
+      requestAnimationFrame(render);
+      
+      var delta_time=clock.getDelta();
+      mesh.rotation.x+=0.1*delta_time;
+      mesh.rotation.y+=0.3*delta_time;
+      
+      renderer.render(scene,camera);
+      };
+      render();
+  </script>
+</body>
+</html>
