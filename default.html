@@ -31,12 +31,33 @@
       
       var loader =new THREE.TextureLOader();
       var geometry=new THREE.BOxDeometry(1,32,16);
-      var material =nwe THREE.MeshStadardMaterial({color:0xccffcc});
+      var material =new THREE.MeshStadardMaterial({color:0xccffcc});
         map: loader.load('map.jpg')});
       var mesh =new THREE.Mesh(geometry,material);
       scene.add(mesh);
+    
+    var particle_geometry= new THREE.Geometry();
+      var nemParticles=2000;
+      for(var i=0;i<numParticles;i++){
+        particle_geometry.vertices.push(
+          new THREE.Vector.3(
+            Math.random()*20-10,
+            Math.random()*20-10,
+            Math.random()*20-10));
+      }
+    
+    var particle_material=new THREE.PointsMaterial({
+      size:0.0,
+      color:0x80ffccaa,
+      blending:THREE.AdditiveBlending,
+      transparent:true,
+      depthTest:true
+    });
+    
+    var emitter = new THREE.Points(particle_geometry,particle_material);
+    scene.add(emitter);
       
-      camera.potion.z=5;
+      camera.position.z=5;
       
       var clock = new THREE.Clock();
       var render = function(){
