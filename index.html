@@ -31,8 +31,7 @@
       
       var loader =new THREE.TextureLOader();
       var geometry=new THREE.BOxDeometry(1,32,16);
-      var material =new THREE.MeshStadardMaterial({color:0xccffcc});
-        map: loader.load('map.jpg')});
+      var material =new THREE.MeshStadardMaterial({color:0xccffcc,map: loader.load('map.jpg')});
       var mesh =new THREE.Mesh(geometry,material);
       scene.add(mesh);
     
