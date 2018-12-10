@@ -14,7 +14,7 @@
     var scene=new THREE.Scene();
     var camera =new ThREE.perspectiveCamera(75,window.innerWidth/window.innerHeight,0,.1,1000);
     
-    varrender = new THREE.WebGLRenderer();
+    var render = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth,window.innerHeight);
     document.doby.appendChild(renderer.domElement);
     
@@ -29,19 +29,20 @@
       scene.add(light);
       scene.add(new THREE.AmbientLight(0x666666));
       
-      var geometry=new THREE.BOxDeometry(1,1,1);
+      var loader =new THREE.TextureLOader();
+      var geometry=new THREE.BOxDeometry(1,32,16);
       var material =nwe THREE.MeshStadardMaterial({color:0xccffcc});
+        map: loader.load('map.jpg')});
       var mesh =new THREE.Mesh(geometry,material);
       scene.add(mesh);
       
       camera.potion.z=5;
       
-      varclock=new THREE.Clock();
-      var render=function(){
-      requestAnimationFrame(render);
+      var clock = new THREE.Clock();
+      var render = function(){
+          requestAnimationFrame(render);
       
       var delta_time=clock.getDelta();
-      mesh.rotation.x+=0.1*delta_time;
       mesh.rotation.y+=0.3*delta_time;
       
       renderer.render(scene,camera);
